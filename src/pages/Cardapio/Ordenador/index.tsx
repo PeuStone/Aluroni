@@ -5,9 +5,11 @@ import classNames from 'classnames';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 
 interface Props {
-    ordenador: string,
-    setOrdenador: React.Dispatch<React.SetStateAction<string>>
+    ordenador: OpcoesOrdenador;
+    setOrdenador: React.Dispatch<React.SetStateAction<OpcoesOrdenador>>;
 }
+
+export type OpcoesOrdenador = '' | 'porcao' | 'qtf_pessoas' | 'preco';
 
 export default function Ordenador({ ordenador, setOrdenador }: Props) {
     const [aberto, setAberto] = useState(false);
@@ -32,7 +34,7 @@ export default function Ordenador({ ordenador, setOrdenador }: Props) {
                     <div
                         className={styles.ordenador__option}
                         key={opcao.value}
-                        onClick={() => setOrdenador(opcao.value)}
+                        onClick={() => setOrdenador(opcao.value as OpcoesOrdenador)}
                     >
                         {opcao.nome}
                     </div>))}
